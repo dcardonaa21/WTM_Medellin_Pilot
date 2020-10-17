@@ -19,11 +19,11 @@ def save_data_as_csv(data_path, save_path):
         data_dict[key].to_csv(save_path / key + ".csv", index=False)
     return 
 
-def download_data(file_name, destination_folder):
+def download_data(url, destination_folder):
     # Define dónde se guardan los datos
-    # file_name: string que contiene el nombre del archivo con su extensión
+    # url: string que contiene el sitio web fuente del archivo
     # destination_folder: string que contiene la ruta relativa de la carpeta en la que se quiere guardar el archivo
-    r = requests.get(destination_folder+file_name, allow_redirects=True)
-    with open(destination_folder+file_name, 'wb') as f:
+    r = requests.get(url, allow_redirects=True)
+    with open(destination_folder + url[url.rfind('/')+1::], 'wb') as f:
         f.write(r.content)
-    return destination_folder+file_name
+    return destination_folder+url[url.rfind('/')+1::]
