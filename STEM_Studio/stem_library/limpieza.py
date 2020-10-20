@@ -1,6 +1,7 @@
 import pandas as pd
-from pathlib import Path
+import pathlib 
 import requests
+
 
 def data_as_df(data_path):
     data_dict = pd.read_excel(data_path, sheet_name=None)
@@ -14,16 +15,23 @@ def data_as_df(data_path):
 
 def save_data_as_csv(data_path, save_path):
     data_dict = data_as_df(data_path)
-    save_path = Path(save_path)
+    save_path = pathlib.Path(save_path)
     for key in data_dict.keys():
         data_dict[key].to_csv(save_path / key + ".csv", index=False)
     return 
 
-def download_data(url, destination_folder):
-    # Define dónde se guardan los datos
-    # url: string que contiene el sitio web fuente del archivo
-    # destination_folder: string que contiene la ruta relativa de la carpeta en la que se quiere guardar el archivo
-    r = requests.get(url, allow_redirects=True)
-    with open(destination_folder + url[url.rfind('/')+1::], 'wb') as f:
+def download_data(destination_folder):
+    """
+    Define donde se guardan los datos
+    url: string que contiene el sitio web fuente del archivo
+    destination_folder: string que contiene la ruta relativa de la carpeta en la que se quiere guardar el archivo
+    """
+    url = "https://github.com/colombia-dev/data/raw/master/salaries/2020/raw.csv"
+    location_path = pathlib.Path(destination_folder)
+    location_path.mkdir(exist_ok=True)
+    r=requests.get(url, allow_redirects=True)
+    name_file= url[url.rfind('/')+1::]
+    location_file = location_path.joinpath(name_file)
+    with open(location_file, 'wb') as f:
         f.write(r.content)
-    return destination_folder+url[url.rfind('/')+1::]
+    return str(location_file)        
