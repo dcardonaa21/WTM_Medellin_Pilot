@@ -101,7 +101,7 @@ def observation_replace(df_column, orig_obs, new_obs):
     orig_obs: string or integer or float or list of observations contained in the dataframe column to be changed.
     new_obs: string or integer or float or list of observations that will replace the original value(s) in the column dataframe.
     Returns:
-    The frequency of each value in the modified dataframe column.
+    The frequency of each value in the modified dataframe column .
     """ 
     replaced_df = df_column.str.replace(orig_obs, new_obs)
     return replaced_df.value_counts()

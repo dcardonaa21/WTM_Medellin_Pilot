@@ -4,11 +4,11 @@ import requests
 
 def download_data(destination_folder):
     """
-    Download graduated students data from 2011 to 2018 into a given destination folder.
+    Download graduated students files from 2011 to 2018 into a given destination folder.
     Parameter:
     destination_folder: string that contains the relative path of the folder in which you want to save the excel file.
     Returns:
-    string with the location of the folder that contains the excel files.
+    string with the location of the folder that contains the excel files .
     """
     url_ls = ["https://storage.googleapis.com/piloto_medellin/GRADUADOS-2001-2017.xlsb", 
     "https://storage.googleapis.com/piloto_medellin/GRADUADOS-2018.xlsx", 
