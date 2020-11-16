@@ -57,7 +57,7 @@ def calligraphy_unification(names_ls):
     Returns:
     new_names_ls: A list with uppercase clean strings.
     """
-    invalid_vowels_dict = {"á":"a", "é":"e", "í":"i", "ó":"o", "ú":"u", "ü":"u", "Á":"A", "É":"E", "Í":"I", "Ó":"O", "Ú":"U", "Ü":"U", "*":"", ","}
+    invalid_vowels_dict = {"á":"a", "é":"e", "í":"i", "ó":"o", "ú":"u", "ü":"u", "Á":"A", "É":"E", "Í":"I", "Ó":"O", "Ú":"U", "Ü":"U", "*":"", ",":"", "-":""}
     characters_ls = []
     new_characters_ls = []
     "new_names_ls = []"
